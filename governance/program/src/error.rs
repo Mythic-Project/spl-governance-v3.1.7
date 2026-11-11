@@ -604,6 +604,10 @@ pub enum GovernanceError {
     /// Program is in maintenance mode and cannot create proposals
     #[error("Program is in maintenance mode and cannot create proposals")]
     MaintenanceMode, // 645
+
+    /// Invalid SPL Token program id
+    #[error("Invalid SPL Token program id")]
+    InvalidTokenProgramId, // 646
 }
 
 impl PrintProgramError for GovernanceError {

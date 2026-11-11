@@ -38,9 +38,10 @@ pub fn process_revoke_governing_tokens(
 
     let realm_data = get_realm_data(program_id, realm_info)?;
 
-    realm_data.assert_is_valid_governing_token_mint_and_holding(
+    realm_data.assert_is_valid_governing_token_program_mint_and_holding(
         program_id,
         realm_info.key,
+        spl_token_info.key,
         governing_token_mint_info.key,
         governing_token_holding_info.key,
     )?;

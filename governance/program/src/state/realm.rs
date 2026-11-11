@@ -258,15 +258,22 @@ impl RealmV2 {
         }
     }
 
-    /// Asserts the given governing token mint and holding accounts are valid
-    /// for the realm
-    pub fn assert_is_valid_governing_token_mint_and_holding(
+    /// Asserts the given SPL Token program, governing token mint and holding
+    /// accounts are valid for the realm
+    pub fn assert_is_valid_governing_token_program_mint_and_holding(
         &self,
         program_id: &Pubkey,
         realm: &Pubkey,
+        spl_token_program_id: &Pubkey,
         governing_token_mint: &Pubkey,
         governing_token_holding: &Pubkey,
     ) -> Result<(), ProgramError> {
+        if spl_token_program_id != &spl_token_2022::id()
+            && spl_token_program_id != &crate::tools::spl_token::inline_spl_token::ID
+        {
+            return Err(GovernanceError::InvalidTokenProgramId.into());
+        }
+
         self.assert_is_valid_governing_token_mint(governing_token_mint)?;
 
         let governing_token_holding_address =
