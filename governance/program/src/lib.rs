@@ -23,4 +23,4 @@ pub const PROGRAM_AUTHORITY_SEED: &[u8] = b"governance";
 /// Platform-wide maintenance mode.
 ///
 /// When set to `true`, no Realm is allowed to create new proposals.
-pub const MAINTENANCE_MODE: bool = true;
+pub const MAINTENANCE_MODE: bool = false;
