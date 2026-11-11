@@ -191,8 +191,8 @@ impl<'a, 'info> ExecutableTransactionMessage<'a, 'info> {
                     .get(usize::from(*index_in_lookup_table))
                     .ok_or(GovernanceError::MissingAddressInLookuptable)?;
 
-                if loaded_account_info.key.eq(pubkey_from_lookup_table) {
-                    msg!("Loaded account should not match pubkey from lookup table");
+                if !loaded_account_info.key.eq(pubkey_from_lookup_table) {
+                    msg!("Loaded account does not match pubkey from lookup table");
                     return Err(GovernanceError::InvalidAccountFound.into());
                 }
 
