@@ -19,3 +19,8 @@ pub use solana_program;
 /// for any new accounts All new PDAs should use a unique prefix to guarantee
 /// uniqueness for each account
 pub const PROGRAM_AUTHORITY_SEED: &[u8] = b"governance";
+
+/// Platform-wide maintenance mode.
+///
+/// When set to `true`, no Realm is allowed to create new proposals.
+pub const MAINTENANCE_MODE: bool = true;

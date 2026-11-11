@@ -57,6 +57,10 @@ pub fn process_create_proposal(
     let rent = Rent::get()?;
     let clock = Clock::get()?;
 
+    if crate::MAINTENANCE_MODE {
+        return Err(GovernanceError::MaintenanceMode.into());
+    }
+
     if !proposal_info.data_is_empty() {
         return Err(GovernanceError::ProposalAlreadyExists.into());
     }

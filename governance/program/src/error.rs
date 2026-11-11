@@ -600,6 +600,10 @@ pub enum GovernanceError {
     /// Lookup Table Account has been extended after vote has started
     #[error("Lookup Table Account has been extended after vote has started")]
     LookupTableAccountHasBeenAltered, // 644
+
+    /// Program is in maintenance mode and cannot create proposals
+    #[error("Program is in maintenance mode and cannot create proposals")]
+    MaintenanceMode, // 645
 }
 
 impl PrintProgramError for GovernanceError {
